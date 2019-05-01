@@ -1,0 +1,21 @@
+
+.tab-content{
+   padding:30px
+}
+.nav-tabs > li > a{
+   border: medium none;
+}
+.nav-tabs > li > a:hover{
+   border: medium #cccccc;
+   border-radius: 0;
+   color:#fff;
+}
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #e6e6e6;
+   color: #808080;
+   text-align: center;
+}

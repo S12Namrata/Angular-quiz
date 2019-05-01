@@ -1,0 +1,47 @@
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12">
+         <div class="card">
+           <div class="card-body">
+             <form #f="ngForm" (ngSubmit)="onSubmit()">
+               <div  *ngFor="let question of listOfQuestion; let i = index">
+                 <div class="row" style="margin-top: 50px">
+                    <div class="col-md-1 text-right">
+                      <label>{{i+1}})</label>
+                    </div>
+                    <div class="col-md-11 text-left">
+                       <label id="{{question.id}}" class="" ></label>
+                       <label>{{question.text}}</label>
+                       <br/>
+                       <div *ngFor="let answer of question.setOfAnswers">
+                         <div class="radio" *ngIf="question.type == 'M'">
+                             <label style="margin-left: 10px">
+                                <input type="radio" name="optradio_{{question.id}}" id="{{answer.id}}"
+                                           (change)="onAnswerSelect(question.id, answer.text)"  value="{{answer.text}}">
+                                {{answer.text}}
+                             </label>
+                         </div>
+                          <div *ngIf="question.type == 'O'">
+                             <br/>
+                             <input type="text" name="ansText_{{i}}" id="{{answer.id}}" [(ngModel)]="userAnswerText" (change)="onAnswerSelect(question.id, userAnswerText)">
+                          </div>
+                          <br/>
+                      </div>
+                    </div>
+                 </div>
+               </div>
+             <br/>
+                <div class ="row">
+                   <div class="col-md-4"> </div>
+                   <div class="col-md-4">
+                      <button class="btn btn-info btn-lg btn-block alert-info" type="submit">Submit</button>
+                   </div>
+                   <div class="col-md-4"> </div>
+
+                </div>
+             </form>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>

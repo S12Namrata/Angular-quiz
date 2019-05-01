@@ -1,0 +1,61 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+<div class="card">
+  <div class="card-body text-center">
+     <div *ngIf = "listOfTopic" class="alert-info">
+        <h2><label >List of Topics</label></h2>
+     </div>
+    <table class="table table-bordered table-hover" *ngIf = "listOfTopic">
+      <thead class="thead-dark">
+      <tr >
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+      <tr>
+      </tr>
+      </thead>
+      <tbody >
+         <tr *ngFor="let topic of listOfTopic">
+           <td><a>{{ topic.id }}</a></td>
+           <td class="font-weight-bold">{{ topic.text }}</td>
+           <td><span >
+              <button class="btn btn-info btn-lg btn-block alert-info" [routerLink]="['/topic_based_quiz',topic.id] ">Take Quiz</button>
+           </span></td>
+         </tr>
+      </tbody>
+    </table>
+     <div *ngIf = "listOfQuiz" class="alert-info">
+        <h2><label >List of Quiz</label></h2>
+     </div>
+     <table class="table table-bordered table-hover" *ngIf = "listOfQuiz">
+        <thead class="thead-dark">
+        <tr>
+           <th scope="col"></th>
+           <th scope="col"></th>
+           <th scope="col"></th>
+           <th scope="col"></th>
+
+        </tr>
+        </thead>
+        <tbody *ngIf = "listOfQuiz">
+        <tr *ngFor="let quiz of listOfQuiz">
+           <td><a>{{ quiz.id }}</a></td>
+           <td class="font-weight-bold">{{ quiz.text }}</td>
+           <td><span >
+              <button class="btn btn-info btn-md  alert-info" [routerLink]="['/selected_quiz',quiz.id] ">Take Quiz</button>
+           </span></td>
+           <td><span >
+              <button class="btn btn-info btn-md alert-info fas fa-trash-alt" (click)="deleteQuiz(quiz.id,'DELETE')">
+              </button>
+           </span></td>
+        </tr>
+        </tbody>
+     </table>
+  </div>
+</div>
+    </div>
+  </div>
+</div>

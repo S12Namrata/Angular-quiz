@@ -1,0 +1,87 @@
+<div class="container">
+   <div class="row">
+      <div class="col-md-12">
+         <div class="card">
+
+            <form #fq="ngForm" (ngSubmit)="onSubmit()">
+               <div class="row my-5" style="margin-top: 50px">
+                  <div class="col-md-3 text-right">
+                     <label for="quizText">Name of Quiz you want to create : </label>
+                  </div>
+                  <div class="col-md-5 text-left">
+                     <input type="text" class="form-control" id="quizText" name="quizText" [(ngModel)]="quiz.text">
+                  </div>
+                  <!--<div class="col-md-2">
+                     <button type="button" class="btn btn-info btn-sm btn-block alert-info" (click)="addQuestions()">Add
+                        questions
+                     </button>
+                  </div>-->
+               </div>
+               <div *ngFor=" let ques of quiz.setOfQuestion; let j = index">
+                  <div class="row">
+                     <div class="row col-md-12 my-5">
+                        <div class="col-md-2 text-right">
+                           <label for="quesText_{{j}}">Enter your question : </label>
+                        </div>
+                        <div class="col-md-10 text-left">
+                           <input type="text" class="form-control" id="quesText_{{j}}" placeholder="{{ques.text}}"
+                                  [(ngModel)]="ques.text" name="questionText_{{j}}">
+                        </div>
+                     </div>
+
+                     <div *ngFor=" let answer of ques.setOfAnswers; let i = index;" class="row col-md-12 my-4">
+                        <div class="col-md-2 text-right">
+                           <label for="op_{{j}}_{{i}}">Enter option {{i+1}} : </label>
+                        </div>
+                        <div class="col-md-5 text-left">
+                           <input type="text" class="form-control" id="op_{{j}}_{{i}}" placeholder="{{answer.text}}"
+                                  [(ngModel)]="answer.text" name="answerText_{{j}}_{{i}}">
+                        </div>
+                        <div class="col-md-5 text-left">
+                           <div class="radio">
+                              <div class="radio">
+                                 <label for="isCorrect_{{j}}_{{i}}">
+                                    <label class="switch ">
+                                       <input type="radio" name="optradio_{{j}}" id="isCorrect_{{j}}_{{i}}"
+                                              [(ngModel)]="answer.isCorrect"
+                                              [value]="i"
+                                              (change)="onSelectionChange(i,ques.setOfAnswers)">
+                                       <span class="slider round "></span>
+                                    </label>
+                                  </label>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+
+                     <div class="row col-md-12 my-1">
+                        <div class="col-md-5"></div>
+                        <div class="col-md-5"></div>
+                        <div class="col-md-2">
+                           <button type="button" class="btn btn-info btn-sm btn-block alert-info"
+                                   (click)="addQuestions()">Add more
+                              question
+                           </button>
+                        </div>
+
+
+                     </div>
+
+                  </div>
+               </div>
+               <div class="row my-3">
+                  <div class="col-md-4"></div>
+
+                  <div class="col-md-4">
+                     <button class="btn btn-info btn-lg btn-block alert-info" type="submit">Submit</button>
+                  </div>
+                  <div class="col-md-4"></div>
+
+               </div>
+            </form>
+
+         </div>
+      </div>
+   </div>
+</div>
